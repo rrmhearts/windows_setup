@@ -1,1 +1,1 @@
-for /D %%i in (*) do echo %%i
+for /D %%i in (*) do ..\..\Sikuli_base\run.cmd %%i
