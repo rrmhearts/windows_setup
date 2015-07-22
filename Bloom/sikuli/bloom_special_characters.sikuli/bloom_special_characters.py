@@ -2,7 +2,7 @@ from __future__ import with_statement
 import string, shutil
 #https://vimeo.com/channels/bloomlibrary/117927599
 
-with open("C:\\Users\\rogersk\\Documents\\newKey.sikuli\\BloomSCNumbers.txt","r") as file:
+with open("c:\\CHANGE_ME_TO_THE_ABSOLUTE_PATH_OF\\BloomSCNumbers.txt","r") as file:
     for line in iter(file):   
         letter = line[0] 
         l_options = int(line[2:-1])
