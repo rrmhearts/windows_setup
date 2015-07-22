@@ -1,1 +1,0 @@
-click('gfw.png')
