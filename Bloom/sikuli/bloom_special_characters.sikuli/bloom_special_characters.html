@@ -1,0 +1,137 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>bloom_special_characters.sikuli\bloom_special_characters.sikuli</h2> <a href="bloom_special_characters.sikuli\bloom_special_characters.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> __future__ <span class="kw">import</span> with_statement
+<span class="kw">import</span> string, shutil
+<span class="cmt">#https://vimeo.com/channels/bloomlibrary/117927599
+</span>
+<span class="kw">with</span> open(<span class="str">"C:\\Users\\rogersk\\Documents\\newKey.sikuli\\BloomSCNumbers.txt"</span>,<span class="str">"r"</span>) <span class="kw">as</span> file:
+    <span class="kw">for</span> line <span class="kw">in</span> iter(file):
+        letter = line[<span class="dig">0</span>]
+        l_options = int(line[<span class="dig">2</span>:-<span class="dig">1</span>])
+
+        app_prefix = <span class="str">""</span>
+        os_prefix = <span class="str">""</span>
+        ap = app_prefix
+        op = os_prefix
+        oap = op+ap
+
+        <span class="skw">click</span>(oap+<img src="title_bar.png" />)
+
+        <span class="kw">import</span> java.awt.Robot <span class="kw">as</span> jR
+
+        r = jR() <span class="cmt"># makes a new robot</span>
+        <span class="cmt">#wait(2)
+</span>        key = ord(letter)
+        capital = key &lt;<span class="dig">97</span>
+        <span class="kw">if</span> <span class="kw">not</span> capital:
+            key = key-<span class="dig">32</span>
+
+        <span class="cmt">#for loop in range(1):
+</span>        <span class="cmt">#for letter in string.ascii_uppercase:
+</span>
+        <span class="kw">for</span> options <span class="kw">in</span> range(<span class="dig">1</span>,l_options+<span class="dig">1</span>):
+            <span class="kw">if</span> capital:
+                r.keyPress(<span class="dig">16</span>)
+            <span class="skw">wait</span>(<span class="dig">.25</span>)
+            r.keyPress(key)
+            r.keyPress(key)
+            <span class="skw">wait</span>(<span class="dig">.5</span>)
+            <span class="kw">for</span> moves <span class="kw">in</span> range(options):
+                <span class="skw">type</span>(Key.RIGHT)
+                <span class="skw">wait</span>(<span class="dig">.25</span>)
+            r.keyRelease(key)
+            <span class="skw">wait</span>(<span class="dig">.25</span>)
+            <span class="kw">if</span> capital:
+                r.keyRelease(<span class="dig">16</span>)
+            <span class="skw">wait</span>(<span class="dig">.25</span>)
+
+        <span class="cmt">#screenshot words
+</span>        image = <span class="skw">capture</span>(Region(<span class="dig">269</span>,<span class="dig">156</span>,<span class="dig">445</span>,<span class="dig">62</span>))
+        shutil.copy(image, letter+<img src=".png" />)
+
+        <span class="cmt">#delete word
+</span>        <span class="kw">for</span> options <span class="kw">in</span> range(<span class="dig">1</span>,l_options+<span class="dig">1</span>):
+           <span class="skw">type</span>(Key.BACKSPACE)
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+        <span class="cmt">#type special words
+</span>
+        <span class="cmt">#for each word
+</span>         <span class="cmt">#type words
+</span>         <span class="cmt">#check word
+</span>         <span class="cmt">#iferror
+</span>          <span class="cmt">#capture actual word   
+</span>         <span class="cmt">#else success
+</span>         <span class="cmt">#delete word</span>
+</pre>
+</body>
+</html>
